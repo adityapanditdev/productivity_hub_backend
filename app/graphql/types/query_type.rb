@@ -9,11 +9,27 @@ module Types
       Note.all
     end
 
+    field :note, Types::NoteType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def note(id:)
+      Note.find(id)
+    end
+
     # Tasks
     field :tasks, [Types::TaskType], null: false
 
     def tasks
       Task.all
+    end
+
+    field :task, Types::TaskType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def task(id:)
+      Task.find(id)
     end
   end
 end
