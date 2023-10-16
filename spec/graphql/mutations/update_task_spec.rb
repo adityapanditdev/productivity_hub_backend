@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/graphql/mutations/update_task_mutation_spec.rb
 
 require 'rails_helper'

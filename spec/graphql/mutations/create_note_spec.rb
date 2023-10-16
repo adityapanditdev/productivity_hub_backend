@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/graphql/mutations/create_note_mutation_spec.rb
 
 require 'rails_helper'
