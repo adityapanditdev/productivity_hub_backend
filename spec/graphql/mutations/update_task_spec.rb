@@ -6,12 +6,13 @@ require 'rails_helper'
 
 RSpec.describe Mutations::UpdateTask, type: :request do
   describe 'updateTask mutation' do
-    let!(:task) { create(:task) }
+    let(:user) { User.create(name: "user_one", email: "user@example.com") }
+    let(:task) { Task.create(name: "test", description: "test", user_id: user.id) }
     let(:name) { 'Updated Task Name' }
     let(:description) { 'Updated Task Description' }
 
     it 'updates an existing task' do
-      post '/graphql', params: { query: update_task_mutation_query(task.id, name, description) }
+      post '/graphql', params: { query: update_task_mutation_query(task.id, name, description, user.id) }
 
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
@@ -25,10 +26,10 @@ RSpec.describe Mutations::UpdateTask, type: :request do
     end
   end
 
-  def update_task_mutation_query(id, name, description)
+  def update_task_mutation_query(id, name, description, userId)
     <<~GQL
       mutation {
-        updateTask(input: { id: "#{id}", name: "#{name}", description: "#{description}" }) {
+        updateTask(input: { id: "#{id}", name: "#{name}", description: "#{description}", userId: #{user.id} }) {
           task {
             id
             name

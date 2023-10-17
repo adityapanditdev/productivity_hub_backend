@@ -4,17 +4,22 @@ require 'rails_helper'
 
 RSpec.describe Mutations::CreateTask, type: :request do
   describe 'createTask' do
-    let(:name) { 'Test' }
+    let(:user) { User.create(name: "user_one", email: "user@example.com") }
+    let(:name) { 'test' }
     let(:description) { 'some text.' }
 
     it 'creates a new task' do
       post '/graphql', params: { query: <<~GRAPHQL
         mutation {
-          createTask(input: { name: "#{name}", description: "#{description}" }) {
+          createTask(input: { name: "#{name}", description: "#{description}", userId: #{user.id} }) {
             task {
               id
               name
               description
+              user{
+                id
+                name
+              }
             }
             errors
           }

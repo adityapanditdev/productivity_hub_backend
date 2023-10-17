@@ -6,17 +6,22 @@ require 'rails_helper'
 
 RSpec.describe Mutations::CreateNote, type: :request do
   describe 'createNote' do
+    let(:user) { User.create(name: "user_one", email: "user@example.com") }
     let(:name) { 'Test Note' }
     let(:content) { 'This is a test note.' }
 
     it 'creates a new note' do
       post '/graphql', params: { query: <<~GRAPHQL
         mutation {
-          createNote(input: { name: "#{name}", content: "#{content}" }) {
+          createNote(input: { name: "#{name}", content: "#{content}", userId: #{user.id} }) {
             note {
               id
               name
               content
+              user{
+                id
+                name
+              }
             }
             errors
           }
