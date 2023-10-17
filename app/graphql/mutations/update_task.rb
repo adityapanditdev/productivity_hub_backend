@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# app/graphql/mutations/update_task.rb
 module Mutations
   class UpdateTask < Mutations::BaseMutation
     argument :id, ID, required: true

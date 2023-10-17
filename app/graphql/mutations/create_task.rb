@@ -11,9 +11,9 @@ module Mutations
 
     def resolve(name:, description:, user_id:)
       user = User.find(user_id)
-      task = user.tasks.new(name: name, description: description)
+      task = user.tasks.new(name:, description:)
       if task.save
-        { task: task, errors: [] }
+        { task:, errors: [] }
       else
         { task: nil, errors: task.errors.full_messages }
       end

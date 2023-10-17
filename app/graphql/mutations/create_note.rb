@@ -11,9 +11,9 @@ module Mutations
 
     def resolve(name:, content:, userId:)
       user = User.find(userId)
-      note = user.notes.new(name: name, content: content)
+      note = user.notes.new(name:, content:)
       if note.save
-        { note: note, errors: [] }
+        { note:, errors: [] }
       else
         { note: nil, errors: note.errors.full_messages }
       end

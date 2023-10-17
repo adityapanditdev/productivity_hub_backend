@@ -55,6 +55,5 @@ module Types
     def user_tasks(user_id:)
       User.find(user_id).tasks
     end
-
   end
 end

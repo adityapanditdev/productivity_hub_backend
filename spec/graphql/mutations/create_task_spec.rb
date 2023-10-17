@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Mutations::CreateTask, type: :request do
   describe 'createTask' do
-    let(:user) { User.create(name: "user_one", email: "user@example.com") }
+    let(:user) { User.create(name: 'user_one', email: 'user@example.com') }
     let(:name) { 'test' }
     let(:description) { 'some text.' }
 

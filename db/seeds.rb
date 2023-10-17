@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Create Users
 user1 = User.create(name: 'User 1', email: 'user1@example.com')
 user2 = User.create(name: 'User 2', email: 'user2@example.com')
@@ -30,4 +31,3 @@ end
     due_date: Faker::Date.between(from: 2.days.ago, to: Date.today)
   )
 end
-

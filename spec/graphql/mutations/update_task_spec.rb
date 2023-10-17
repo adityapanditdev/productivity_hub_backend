@@ -6,8 +6,8 @@ require 'rails_helper'
 
 RSpec.describe Mutations::UpdateTask, type: :request do
   describe 'updateTask mutation' do
-    let(:user) { User.create(name: "user_one", email: "user@example.com") }
-    let(:task) { Task.create(name: "test", description: "test", user_id: user.id) }
+    let(:user) { User.create(name: 'user_one', email: 'user@example.com') }
+    let(:task) { Task.create(name: 'test', description: 'test', user_id: user.id) }
     let(:name) { 'Updated Task Name' }
     let(:description) { 'Updated Task Description' }
 
@@ -26,7 +26,7 @@ RSpec.describe Mutations::UpdateTask, type: :request do
     end
   end
 
-  def update_task_mutation_query(id, name, description, userId)
+  def update_task_mutation_query(id, name, description, _userId)
     <<~GQL
       mutation {
         updateTask(input: { id: "#{id}", name: "#{name}", description: "#{description}", userId: #{user.id} }) {

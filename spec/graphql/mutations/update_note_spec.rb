@@ -6,8 +6,8 @@ require 'rails_helper'
 
 RSpec.describe Mutations::UpdateNote, type: :request do
   describe 'updateNote mutation' do
-    let(:user) { User.create(name: "user_one", email: "user@example.com") }
-    let(:note) { Note.create(name: "test", content: "test", user_id: user.id) }
+    let(:user) { User.create(name: 'user_one', email: 'user@example.com') }
+    let(:note) { Note.create(name: 'test', content: 'test', user_id: user.id) }
     let(:name) { 'Updated Note Name' }
     let(:content) { 'Updated Note Content' }
 
@@ -26,7 +26,7 @@ RSpec.describe Mutations::UpdateNote, type: :request do
     end
   end
 
-  def update_note_mutation_query(id, name, content, userId)
+  def update_note_mutation_query(id, name, content, _userId)
     <<~GQL
       mutation {
         updateNote(input: { id: "#{id}", name: "#{name}", content: "#{content}", userId: #{user.id} }) {
