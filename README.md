@@ -13,6 +13,7 @@ Before you begin, make sure you have the following software installed on your sy
 - Ruby: 3.2.2
 - Rails: 7.1.0. You can install it with `gem install rails`.
 - MYSQL: You should have MYSQL installed and configured on your system.
+- Install dokcer and docker compose
 
 ## Getting Started
 
@@ -26,22 +27,11 @@ Follow these steps to set up your Ruby on Rails project:
 
 2. **Run command for installing bundle:**
 
-   bundle install
+   docker-compose up --build
 
-3. **Setup database.yml file**
+3. **Create the database:**
 
-4.  **Create the database:**
-
-   rails db:create
-
-5.  **Migrate database:**
-
-   rails db:migrate
-
-6.  **seed database:**
-
-   rails db:seed
-
-7.  **Run server:**
-
-   rails s -p 3000
+- docker exec -it productivity_hub_backend_web_1 bash
+- rails db:create
+- rails db:migrate
+- rails db:seed
